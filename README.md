@@ -10,15 +10,18 @@ Project description goes here...
 
 ### CONFIGURATIONS
 
-Log in R/3.2.1 session to ensure Rmpi_0.6-5 & lars_0.9-8 are loaded. 
-Modify #SBATCH --mail-user=wustl.id@wustl.edu in ```run_lasso_parallel_init.sh``` to recieve notification of job progress.
+* Log in R/3.2.1 session to ensure Rmpi_0.6-5 & lars_0.9-8 are loaded. 
+* Modify #SBATCH --mail-user=wustl.id@wustl.edu in ```run_lasso_parallel_init.sh``` to recieve notification of job progress.
 
 
 ### RUNNING NETWORK INFERENCE
 
 	```
-	export PATH=${projDir}:$PATH
-	sbatch run_lasso_parallel_init.sh ${targetExpressionFile} ${regulatorExpressionFile} ${allowedMatrixFile} ${perturbationMatrixFile} ${microarrayFlag} ${nonGlobalShrinkageFlag} ${lassoAdjMtrFileName} ${combinedModelAdjMtrFileName} ${outputDirectory} ${combinedModelAdjLstFileName} ${regulatorGeneNamesFile} ${targetGeneNamesFile}
+	export PATH=<projectDirectory>:$PATH
+	sbatch run_lasso_parallel_init.sh <targetExpressionFile> <regulatorExpressionFile> \ 
+	<allowedMatrixFile> <perturbationMatrixFile> <microarrayFlag> <nonGlobalShrinkageFlag> \ 
+	<lassoAdjMtrFileName> <combinedModelAdjMtrFileName> <outputDirectory> \ 
+	<combinedModelAdjLstFileName> <regulatorGeneNamesFile> <targetGeneNamesFile>
 	```
 
 ### EVALUATE INFERENCE ACCURACY
