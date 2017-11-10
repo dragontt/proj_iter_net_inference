@@ -18,13 +18,12 @@ Project description goes here...
 
 	```
 	export PATH=<projectDirectory>:$PATH
-	sbatch run_lasso_parallel_init.sh <targetExpressionFile> <regulatorExpressionFile> \ 
-	<allowedMatrixFile> <perturbationMatrixFile> <microarrayFlag> <nonGlobalShrinkageFlag> \ 
-	<lassoAdjMtrFileName> <combinedModelAdjMtrFileName> <outputDirectory> \ 
-	<combinedModelAdjLstFileName> <regulatorGeneNamesFile> <targetGeneNamesFile>
+	sbatch run_lasso_parallel_init.sh <targetExpressionFile> <regulatorExpressionFile> <allowedMatrixFile> \
+	<perturbationMatrixFile> <lassoAdjMtrFileName> <outputDirectory>
 	```
 
 ### EVALUATE INFERENCE ACCURACY
 
 	```
+    sbatch scripts/run_evaluate_network.sh <networkFile> 32 20
 	```
