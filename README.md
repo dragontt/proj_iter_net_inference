@@ -16,6 +16,13 @@ Project description goes here...
 ### RUNNING NETWORK INFERENCE
 Run LASSO regression to infer TF-gene network, using the TF activity matrix inferred from TFA algorithm and gene expression matrix. This module is designed to be combined with TFA module to iteratively refine the inferred network.
 
+ARGS | DESCRITPION
+--- | ---
+targetExpressionFile | A matrix of the expression values of all genes measured. Rows represent genes, columns represent samples/conditions, i.e. the matrix dimension is number of genes x number of samples.
+regulatorActivityFile | A matrix of the activities of all TF inferred. Rows represent TFs, columns represent samples/conditions, i.e. the matrix dimension is number of TFs x number of samples.
+allowedMatrixFile | A space separated binary adjacency matrix of size # of TFs (rows) x # of target genes (columns). For each possible interaction between TF i (Ri) and target gene j (Tj), entry Mij is set to 1 if Ri is allowed to regulate Tj and 0 if Ri is not allowed to regulate Tj. Users should disallow auto-regulation by setting Mij = 0 when Ri==Tj.
+perturbationMatrixFile | A space separated binary matrix of size # of target genes (rows) x # of expression conditions (columns). Each entry Mij is set to 0 if target gene i (Ti) is not experimentally perturbed (e.g. overexpressed, knocked down, or knocked out) in condition j (Cj). Thus, Mij = 1 if Ti is perturbed in Cj and Mij = 0 otherwise.
+
 ```
 export PATH=<projectDirectory>:$PATH
 sbatch scripts/run_lasso_parallel_init.sh <targetExpressionFile> <regulatorActivityFile> \ 
@@ -27,18 +34,16 @@ Evaluate the performance of iteractive network inference, against two benchmarks
 
 ```<networkFile>``` is the inferred network map in adjacency matrix form. ```<topInteractions>``` is the number of top-ranked interactions with unit (k), e.g. 31.3 = 31,300 edges. ```<bins>``` is the number of bins, use 20.
 
+ARGS | DESCRITPION
+--- | ---
+networkFile | The inferred network map in adjacency matrix form.<topInteractions | Number of top-ranked interactions with unit (k), e.g. 31.3 = 31,300 edges. 
+bins | Number of bins, use 20.
 
 ```
 sbatch scripts/run_evaluate_network.sh <networkFile> <topInteractions> <bins>
 ```
 
-### DESCRIPTIONS OF DATA FILES
-FILE | DESCRITPION
---- | ---
-targetExpressionFile | A matrix of the expression values of all genes measured. Rows represent genes, columns represent samples/conditions, i.e. the matrix dimension is number of genes x number of samples.
-regulatorActivityFile | A matrix of the activities of all TF inferred. Rows represent TFs, columns represent samples/conditions, i.e. the matrix dimension is number of TFs x number of samples.
-allowedMatrixFile | A space separated binary adjacency matrix of size # of TFs (rows) x # of target genes (columns). For each possible interaction between TF i (Ri) and target gene j (Tj), entry Mij is set to 1 if Ri is allowed to regulate Tj and 0 if Ri is not allowed to regulate Tj. Users should disallow auto-regulation by setting Mij = 0 when Ri==Tj.
-perturbationMatrixFile | A space separated binary matrix of size # of target genes (rows) x # of expression conditions (columns). Each entry Mij is set to 0 if target gene i (Ti) is not experimentally perturbed (e.g. overexpressed, knocked down, or knocked out) in condition j (Cj). Thus, Mij = 1 if Ti is perturbed in Cj and Mij = 0 otherwise.
+
 
 
 
