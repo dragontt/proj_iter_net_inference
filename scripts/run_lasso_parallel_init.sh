@@ -13,6 +13,9 @@ perturbationMatrixFile=${4}
 lassoAdjMtrFileName=${5}
 outputDirectory=${6}
 
+module load R/3.2.1
+module load openmpi
+
 echo "calling mpirun now, SLURM_NTASKS=${SLURM_NTASKS}"
 
 mpirun -np ${SLURM_NTASKS} R --no-save -q --args ${targetExpressionFile} ${regulatorExpressionFile} ${allowedMatrixFile} ${perturbationMatrixFile} ${microarrayFlag} ${lassoAdjMtrFileName} ${outputDirectory} < run_lasso_parallel_init.r > ../log/lasso.out
