@@ -18,14 +18,14 @@ Run LASSO regression to infer TF-gene network, using the TF activity matrix infe
 
 	```
 	export PATH=<projectDirectory>:$PATH
-	sbatch scripts/run_lasso_parallel_init.sh <targetExpressionFile> <regulatorActivityFile> <allowedMatrixFile> \
-	<perturbationMatrixFile> <lassoAdjMtrFileName> <outputDirectory>
+	sbatch scripts/run_lasso_parallel_init.sh <targetExpressionFile> <regulatorActivityFile> \ 
+	<allowedMatrixFile> <perturbationMatrixFile> <lassoAdjMtrFileName> <outputDirectory>
 	```
 
 ### EVALUATE INFERENCE ACCURACY
 Evaluate the performance of iteractive network inference, against two benchmarks (1) network built from ChIP-chip/seq experiments (measure TF binding strength) (2) network built from DNA-binding motif (computaitonal model) of TFs (TF binding potentials).
 
-<networkFile> is the inferred network map in adjacency matrix form. <topInteractions> is the number of top-ranked interactions with unit (k), e.g. 31.3 = 31,300 edges. <bins> is the number of bins, use 20.
+```<networkFile>``` is the inferred network map in adjacency matrix form. ```<topInteractions>``` is the number of top-ranked interactions with unit (k), e.g. 31.3 = 31,300 edges. ```<bins>``` is the number of bins, use 20.
 
 
 	```
