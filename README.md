@@ -35,7 +35,7 @@ Evaluate the performance of iteractive network inference, against two benchmarks
 ARGS | DESCRITPION
 --- | ---
 networkFile | The inferred network map in adjacency matrix form.
-topInteractions | Number of top-ranked interactions with unit (k), e.g. 31.3 = 31,300 edges. 
+topInteractions | Number of top-ranked interactions with unit (k), e.g. 31.3 = 31,300 edges, which means we evaluate, on average, 100 targets per TFs (313 total) in the whole network. 
 bins | Number of bins, use 20.
 
 ```
