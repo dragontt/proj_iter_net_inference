@@ -32,18 +32,15 @@ sbatch scripts/run_lasso_parallel_init.sh <targetExpressionFile> <regulatorActiv
 ### EVALUATE INFERENCE ACCURACY
 Evaluate the performance of iteractive network inference, against two benchmarks (1) network built from ChIP-chip/seq experiments (measure TF binding strength) (2) network built from DNA-binding motif (computaitonal model) of TFs (TF binding potentials).
 
-```<networkFile>``` is the inferred network map in adjacency matrix form. ```<topInteractions>``` is the number of top-ranked interactions with unit (k), e.g. 31.3 = 31,300 edges. ```<bins>``` is the number of bins, use 20.
-
 ARGS | DESCRITPION
 --- | ---
-networkFile | The inferred network map in adjacency matrix form.<topInteractions | Number of top-ranked interactions with unit (k), e.g. 31.3 = 31,300 edges. 
+networkFile | The inferred network map in adjacency matrix form.
+topInteractions | Number of top-ranked interactions with unit (k), e.g. 31.3 = 31,300 edges. 
 bins | Number of bins, use 20.
 
 ```
 sbatch scripts/run_evaluate_network.sh <networkFile> <topInteractions> <bins>
 ```
 
-
-
-
-
+### MAKE EVALUATION PLOTS
+TBA
