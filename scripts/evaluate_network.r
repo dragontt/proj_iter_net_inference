@@ -14,7 +14,7 @@ net <- read.table(network,header=TRUE)
 pdna.inter <- read.table(chip_net,header=TRUE)
 bsinfo <- read.table(pwm_net,header=TRUE)
 
-source("/scratch/mblab/yiming.kang/np_scripts/util.r")
+source("util.r")
 
 chip.bp.np.setsizes <- c()
 regulators_evaluated_cnt <- c()
