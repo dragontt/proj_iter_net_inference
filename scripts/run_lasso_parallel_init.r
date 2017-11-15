@@ -9,6 +9,7 @@ microarrayFlag <- 1
 
 source("run_lasso_parallel.r")
 library(Rmpi)
+
 mpi.bcast.Robj2slave(targetExpressionFile)
 mpi.bcast.Robj2slave(regulatorExpressionFile)
 mpi.bcast.Robj2slave(allowedMatrixFile)
