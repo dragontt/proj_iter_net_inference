@@ -30,7 +30,7 @@ sbatch scripts/run_lasso_parallel_init.sh <targetExpressionFile> <regulatorActiv
 ```
 
 ### EVALUATE INFERENCE ACCURACY
-Evaluate the performance of iteractive network inference, against two benchmarks (1) network built from ChIP-chip/seq experiments (measure TF binding strength) (2) network built from DNA-binding motif (computaitonal model) of TFs (TF binding potentials).
+Evaluate the performance of iteractive network inference, against two benchmarks (1) network built from ChIP-chip/seq experiments (measure TF binding strength) (2) network built from DNA-binding motif/PWM (computaitonal model) of TFs (TF binding potentials).
 
 ARGS | DESCRITPION
 --- | ---
@@ -43,4 +43,17 @@ sbatch scripts/run_evaluate_network.sh <networkFile> <topInteractions> <bins>
 ```
 
 ### MAKE EVALUATION PLOTS
-TBA
+Make two plots for ChIP support and PWM support respectively.
+
+ARGS | DESCRITPION
+--- | ---
+listEvaluationFiles | A list of evaluation files. Delimited by space.
+listEvaluationLabels | A list of evaluation labels, used as the legened of evaluation plots. Delimited by space.
+step | 5 * number of TFs.
+numTFs | Number of TFs.
+outputFilePrefix | File prefix of the output figures. Two files will be generated. 
+listEvaluationColors | Optional. A list of colors of evaluation plots. Delimited by space. For color options, check `python scripts/plot_evaluation.py -h`.
+
+```
+python scripts/plot_evaluation.py -f <listEvaluationFiles> -l <listEvaluationLabels> -s <step> -t <numTFs> -o <outputFilePrefix>
+```
