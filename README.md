@@ -55,5 +55,6 @@ outputFilePrefix | File prefix of the output figures. Two files will be generate
 listEvaluationColors | Optional. A list of colors of evaluation plots. Delimited by space. For color options, check `python scripts/plot_evaluation.py -h`.
 
 ```
-python scripts/plot_evaluation.py -f <listEvaluationFiles> -l <listEvaluationLabels> -s <step> -t <numTFs> -o <outputFilePrefix>
+python scripts/plot_evaluation.py -f <listEvaluationFiles> -l <listEvaluationLabels> \
+-s <step> -t <numTFs> -o <outputFilePrefix>
 ```
