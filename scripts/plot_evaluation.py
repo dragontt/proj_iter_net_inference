@@ -79,8 +79,8 @@ def plot_analysis(fns, colors, labels, figure_name, num_tfs, step, eval_method, 
     for label in ax.xaxis.get_ticklabels()[::2]:
         label.set_visible(False)
     handles, labels = ax.get_legend_handles_labels()
-    handles.insert(0, handles.pop())
-    labels.insert(0, labels.pop())
+    # handles.insert(0, handles.pop())
+    # labels.insert(0, labels.pop())
     plt.legend(handles[::-1], labels[::-1], fontsize=font_size)
     plt.tight_layout()
     plt.savefig(figure_name + '.ChIP_support.pdf', fmt='pdf')
@@ -112,8 +112,8 @@ def plot_analysis(fns, colors, labels, figure_name, num_tfs, step, eval_method, 
     for label in ax.xaxis.get_ticklabels()[::2]:
         label.set_visible(False)
     handles, labels = ax.get_legend_handles_labels()
-    handles.insert(0, handles.pop())
-    labels.insert(0, labels.pop())
+    # handles.insert(0, handles.pop())
+    # labels.insert(0, labels.pop())
     plt.legend(handles[::-1], labels[::-1], fontsize=font_size)
     plt.tight_layout()
     plt.savefig(figure_name + '.PWM_support.pdf', fmt='pdf')
