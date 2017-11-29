@@ -30,7 +30,7 @@ NAME_ANALYSIS=${NETWORK##*/}
 NAME_ANALYSIS=${NAME_ANALYSIS%.adjmtr}
 sed -i 's/ /\t/g' ${NETWORK}
 echo -e "REGULATOR\tTARGET\tCONFIDENCE" > ${ADJLST}
-adjmtr2interactions.rb -a ${NETWORK} -r ${REGS} -c ${GENES} >> ${ADJLST}
+./adjmtr2interactions.rb -a ${NETWORK} -r ${REGS} -c ${GENES} >> ${ADJLST}
 
 ## evaluate network in NetProphet style
 Rscript evaluate_network.r ${ADJLST} ${CHIP_NET} ${PWM_NET} ${DIR_ANALYSIS}/evaluation.${NUMBINS}bins.top${MINRANK}to${MAXRANK}k.${NAME_ANALYSIS}.txt ${MAXRANK} ${NUMBINS}
