@@ -22,8 +22,9 @@ regulators_evaluated_cnt <- c()
 # chip_desired_recall <- 0.33
 # np_conf_cutoff <- 0.02036
 
-orf_universe <- intersect(union(unique(bsinfo$TARGET),unique(pdna.inter$TARGET)),unique(net$TARGET))
-reg_universe <- intersect(unique(as.character(pdna.inter$REGULATOR)),unique(as.character(bsinfo$REGULATOR)))
+orf_universe <- intersect(union(unique(bsinfo$TARGET),unique(pdna.inter$TARGET)),unique(net$TARGET)) ## targets regulated by at least one TF in ChIP or PWM, intersected with the targets of the inferred network
+reg_universe <- intersect(unique(as.character(pdna.inter$REGULATOR)),unique(as.character(bsinfo$REGULATOR))) ## TFs regulated that are ChIP or have a PWM (at least one target), intersected with the TFs of the inferred network
+reg_universe <- intersect(reg_universe, unique(as.character(net$REGULATOR))) ## reduce TF space to the size of inferred network 
 interaction_universe_cnt <- length(reg_universe) * length(orf_universe)
 
 np_conf_cutoffs <- net$CONFIDENCE[order(net$CONFIDENCE,decreasing=TRUE)][seq(max_rank/num_bins,max_rank,by=max_rank/num_bins)]
@@ -39,7 +40,7 @@ for (np_conf_cutoff in np_conf_cutoffs)
 		chip.bp.np.sets <- c()
 
 		i <- 1
-		for (regulator in intersect(unique(as.character(pdna.inter$REGULATOR)),unique(as.character(bsinfo$REGULATOR))) )
+		for (regulator in reg_universe )
 		{
 			targets <- union(as.character(pdna.inter$TARGET[which(pdna.inter$REGULATOR==regulator)]),as.character(bsinfo$TARGET[which(bsinfo$REGULATOR==regulator)]))
 			pdna.evid <- rep(0,times=length(targets))
